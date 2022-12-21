@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+  <!--keyword hello-->
+  <category>
+    <pattern>Hello</pattern>
+    <template>
+        Hello, I am career chatbot, you may start by typing "Start".
+    </template>
+  </category>
+  <category>
+    <pattern>Hello *</pattern>
+    <template>
+        <srai>Hello</srai>
+    </template>
+  </category>
+   <category>
+    <pattern>_ Hello *</pattern>
+    <template>
+        <srai>Hello</srai>
+    </template>
+  </category>
+   <category>
+    <pattern>_ Hello</pattern>
+    <template>
+        <srai>Hello</srai>
+    </template>
+  </category>
+  
+  <!-- asking user's name-->
+  <category>
+    <pattern>Start</pattern>
+    <template>
+        Great, lets start with your name, type "My name is __" 
+    </template>
+  </category>
+  
+  <!-- asking user's major-->
+    <category>
+    <pattern>My name is * </pattern>
+    <template>
+        Hi, <set name="name"> <star/></set> are you a computer science major?
+        <button>
+            <text>Yes</text>
+            <postback>CSMajor</postback>
+        </button>
+        <button>
+            <text>No</text>
+            <postback>NotCSMajor</postback>
+        </button>
+    </template>
+  </category>
+  
+  
+  <!-- if cs major-->
+  <category>
+      <pattern>CSMajor</pattern>
+      <template>
+          Well, would you consider yourself as
+          <button>
+              <text>Creative</text>
+              <postback>C</postback>
+          </button>
+          <button>
+              <text>Analytical</text>
+              <postback>A</postback>
+          </button>
+      </template>
+  </category>
+  
+  <!-- cs major and pick Creative-->
+  <category>
+      <pattern>C</pattern>
+      <template>
+          Which field are you good at or interested in? 
+          <button>
+              <text>Create a video game</text>
+              <postback>GameDeveloper</postback>
+          </button>
+          <button>
+              <text>Create a website</text>
+              <postback>WebDevelop</postback>
+          </button>
+          <button>
+              <text>Design UI for software</text>
+              <postback>Frontend</postback>
+          </button>
+      </template>
+  </category>
+  
+  <!-- three job recommand for creative cs major students-->
+  <category>
+      <pattern>GameDeveloper</pattern>
+      <template>
+          <random>
+            <li>Awesome!<get name="name"></get>  You might want to be a game developer.</li>
+            <li> <get name="name"></get>, You are perfect fit for a game developer position.</li>
+            <li>How about game developer? You will like it!</li>
+          </random>
+      </template>
+  </category>
+  
+  <category>
+      <pattern>WebDevelop</pattern>
+      <template>
+          <random>
+            <li>Awesome!<get name="name"></get>  You might want to be a web developer.</li>
+            <li> <get name="name"></get>, You are perfect fit for a web developer position.</li>
+            <li>How about web developer? You will like it!</li>
+          </random>
+      </template>
+  </category>
+  
+  <category>
+      <pattern>Frontend</pattern>
+      <template>
+          <random>
+            <li>Awesome!<get name="name"></get>  You might want to be a front end engineer.</li>
+            <li> <get name="name"></get>, You are perfect fit for a front end engineer position.</li>
+            <li>How about front end engineer? You will like it!</li>
+          </random>
+      </template>
+  </category>
+  
+  
+  <!-- cs major and pick analytical-->
+    <category>
+      <pattern>A</pattern>
+      <template>
+          Which field are you good at or interested in? 
+          <button>
+              <text>Work with data</text>
+              <postback>DataAnalyst</postback>
+          </button>
+          <button>
+              <text>Write code for programs</text>
+              <postback>BackEnd</postback>
+          </button>
+      </template>
+  </category>
+  
+  <!-- two job recommand for analytical-->
+    <category>
+      <pattern>DataAnalyst</pattern>
+      <template>
+          <random>
+            <li>Awesome!<get name="name"></get>  You might want to be a data analyst.</li>
+            <li> <get name="name"></get>, You are perfect fit for a data analyst position.</li>
+            <li>How about data analyst? You will like it!</li>
+          </random>
+      </template>
+  </category>
+  
+  <category>
+      <pattern>BackEnd</pattern>
+      <template>
+          <random>
+            <li>Awesome!<get name="name"></get>  You might want to be a back end engineer.</li>
+            <li> <get name="name"></get>, You are perfect fit for a back end engineer position.</li>
+            <li>How about back end engineer? You will like it!</li>
+          </random>
+      </template>
+  </category>
+  
+  
+  
+  
+  
+  <!-- if not cs major-->
+    <category>
+      <pattern>NotCSMajor</pattern>
+      <template>
+          This chatbot is designed for CS major student, would you like to continue? 
+          <button>
+              <text>Yes</text>
+              <postback>CSMajor</postback>
+          </button>
+          <button>
+              <text>No</text>
+              <postback>end</postback>
+          </button>
+      </template>
+  </category>
+  
+  <!-- ending -->
+  <category>
+      <pattern>end</pattern>
+      <template>
+          Well <get name = "name"></get>, It's nice to chat with you! Have a nice day!
+      </template>
+  </category>
+  
+ <!-- when no keyword detected--> 
+    <category>
+    <pattern>*</pattern>
+    <template>I have no answer for that.</template>
+  </category>
+</aiml>
